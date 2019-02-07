@@ -1,0 +1,76 @@
+<!----------------------------------------------------------------------------------------------------->
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+    <br />
+    <title>
+        <h2>Search Articles....</h2>
+    </title>
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8">
+            <form class="card card-sm">
+                <div class="card-body row no-gutters align-items-center">
+                    <div class="col-auto">
+                        <i class="fa fa-search"></i>
+                    </div>
+                   <div class="col">
+                        <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search keywords...."
+                            #keyword>
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-lg btn-success" type="submit" (click)=searchArticle(keyword.value)>Search</button>
+                    </div>
+                    <!--end of col-->
+                </div>
+            </form>
+        </div>
+        <!--end of col-->
+    </div>
+</div>
+<!------------------------------------------------------------------------------------------->
+<br />
+<br />
+<div class="demo">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-6 col-12 col-sm-12" *ngFor="let article of articleList">
+                <div id="news-slider2" class="owl-carousel">
+                    <div class="post-slide2">
+                        <div class="post-content">
+                            <h3 class="post-title">{{article.title}}</h3>
+                            <ul class="post-bar">
+                                <p class="para">{{article.author}}</p>
+                            </ul>
+                            <h4> <i class="fa fa-star" data-toggle="modal" data-target="#myModal" (click)="addUserFavourites(article.title,article.description)"
+                                    style="cursor: pointer;"></i> </h4>
+                            <p class="post-description">
+                                {{article.content}}
+                            </p>
+                            <ul class="post-bar">
+                                <h6 class="post-title">{{article.publishedAt | date:'fullDate'}} </h6>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="isSaved">
+                    <div *ngIf="!userArticle.articleExist && currentArticleTitle==article.title">
+                        <div class="alert alert-success" role="alert">
+                            <h4>Article added to your favourite list!</h4>
+                            <p>Go to the favourite page.</p>
+                        </div>
+                    </div>
+                    <div *ngIf="userArticle.articleExist && currentArticleTitle==article.title">
+                        <div class="alert alert-danger" role="alert">
+                            Already Exist in your favorites!
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>

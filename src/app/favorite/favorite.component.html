@@ -1,0 +1,32 @@
+<!----------------------------------------------------------------------------------------------------->
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="demo">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-6 col-12 col-sm-12"  *ngFor="let article of userList">
+                <div id="news-slider2" class="owl-carousel">
+                    <div class="post-slide2">                                               
+                        <div class="post-content">
+                            <h3 class="post-title">{{article.title}}</h3>
+                             <p class="post-description">
+                                    {{article.content}}
+                            </p>
+                            <p class="post-description">
+                                {{article.description}}
+                            </p>
+                            <ul class="post-bar">
+                                <h3 class="post-title">{{article.author}}</h3>
+                            </ul>
+                            <h4> <button class="btn btn-primary" (click)="deleteFavoriteArticle(article)" style="cursor: pointer;">Delete</button> </h4>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  

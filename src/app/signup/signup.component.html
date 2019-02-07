@@ -1,0 +1,73 @@
+<!--------------------------------------------------------------------------------------------------->
+
+<div class="container register">
+    <div class="row">
+        <div class="col-md-3 register-left">
+
+            <h3>Welcome</h3>
+            <p class="para">Signup By Choosing Any Language</p>
+        </div>
+        <div class="col-md-9 register-right">
+            <form [formGroup]="signup">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <h3 class="register-heading">Signup</h3>
+                        <div class="row register-form">
+                            <!------------------------------------------------------->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Name *" formControlName="name"
+                                        id="signupname" />
+                                    <div class="alert text-danger" *ngIf="!signup.controls['name'].valid && signup.controls['name'].touched">Name
+                                        is required</div>
+                                </div>
+
+                            </div>
+                            <!--------------------------------------------------------->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Email *" formControlName="email"
+                                        id="signupemail" />
+                                    <div class="alert text-danger" *ngIf="!signup.controls['email'].valid && signup.controls['email'].touched">Email
+                                        is required</div>
+                                </div>
+                            </div>
+                            <!----------------------------------------------------------->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Password *"
+                                        formControlName="password" id="signuppassword/>
+                                            <div class="
+                                        alert text-danger" *ngIf="!signup.controls['password'].valid && signup.controls['password'].touched">Minlength
+                                    is 2 and max length is 8</div>
+                            </div>
+                        </div>
+                        <!------------------------------------------------->
+                        <div class="col-md-6">
+                            <div formGroupName=language>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <select class="form-control" formControlName="id">
+                                            <option class="dropdown-item" value="0">Select Language</option>
+                                            <option *ngFor="let language of list" [value]="language.id" id="signuplanguage">{{language.language}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-------------------------------------------------------->
+                        <button class="btn btn-primary btn" (click)="saveUser()">Sign Up</button>
+                        <div *ngIf="error" class="text-danger">System error
+                            {{errorMessage.message}}
+                        </div>
+                        <div *ngIf="saveUser" class="text-success">User Registered Sucessfully
+                            {{errorMessage.message}}
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </form>
+    </div>
+</div>
+</div>

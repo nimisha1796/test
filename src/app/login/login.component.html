@@ -1,0 +1,42 @@
+
+<div class="container register">
+    <div class="row">
+        <div class="col-md-3 register-left">
+
+            <h3>Welcome To Login Page</h3>
+
+        </div>
+        <div class="col-md-9 register-right">
+            <form [formGroup]="login">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <h3 class="register-heading">Login</h3>
+                        <div class="row register-form">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="loginemail" placeholder="Email *" formControlName="email" />
+                                    <div class="alert text-danger" *ngIf="!login.controls['email'].valid && login.controls['email'].touched" ">Please Enter Correct email</div> 
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Password *" id="loginpassword"
+                                        formControlName="password" />
+                                        <div class="alert text-danger" *ngIf="!login.controls['password'].valid && login.controls['password'].touched">Please Enter Correct password</div> 
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn" (click)="authenticate()">Login</button>
+                            <div class="col-md-6">
+                                <br>
+                                <p class="para">Not A user....Signup By Clicking &nbsp;<a href="/signup" (click)="signupUser()">Here</a></p>
+                            </div>
+                        </div>
+                        <div *ngIf="error" class="text-danger">System error
+                                {{errorMessage.message}}
+                        </div> 
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
